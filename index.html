@@ -258,30 +258,32 @@
             <p class="text-xl text-gray-400 mb-8 leading-[1.8]">무료 미팅을 신청하시면 귀사의 호텔 경쟁력을 분석해 드립니다.</p>
             <p class="mb-16 text-blue-400 font-medium font-bold text-xl">직접 이메일 문의: <a href="mailto:resumet@naver.com" class="underline hover:text-blue-300 transition">resumet@naver.com</a></p>
             
-            <form action="mailto:resumet@naver.com" method="post" enctype="text/plain" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 <div class="space-y-2">
                     <label class="text-sm font-bold text-gray-400 ml-1">호텔/숙소 명칭</label>
-                    <input type="text" name="Hotel Name" placeholder="예: 스테이부스트 호텔" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
+                    <input type="text" name="hotel_name" placeholder="예: 스테이부스트 호텔" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-bold text-gray-400 ml-1">담당자 성함</label>
-                    <input type="text" name="Name" placeholder="예: 홍길동 팀장" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
+                    <input type="text" name="contact_name" placeholder="예: 홍길동 팀장" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-bold text-gray-400 ml-1">이메일 주소</label>
-                    <input type="email" name="Email" placeholder="example@email.com" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
+                    <input type="email" name="reply_to" placeholder="example@email.com" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
                 </div>
                 <div class="space-y-2">
                     <label class="text-sm font-bold text-gray-400 ml-1">연락처</label>
-                    <input type="tel" name="Phone" placeholder="010-0000-0000" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
+                    <input type="tel" name="phone" placeholder="010-0000-0000" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
                 </div>
                 <div class="md:col-span-2 space-y-2">
                     <label class="text-sm font-bold text-gray-400 ml-1">문의 내용</label>
-                    <textarea name="Message" placeholder="현재 고민 중이신 부분을 적어주세요." class="w-full bg-gray-800 border-none p-5 rounded-2xl h-40 focus:ring-2 focus:ring-blue-500 outline-none text-white transition resize-none" required></textarea>
+                    <textarea name="message" placeholder="현재 고민 중이신 부분을 적어주세요." class="w-full bg-gray-800 border-none p-5 rounded-2xl h-40 focus:ring-2 focus:ring-blue-500 outline-none text-white transition resize-none" required></textarea>
                 </div>
-                <button type="submit" class="md:col-span-2 bg-blue-600 text-white py-6 rounded-2xl font-bold text-xl hover:bg-blue-500 transition shadow-xl shadow-blue-900/20 mt-4">메일로 문의 보내기</button>
+                <input type="hidden" name="submitted_at" id="submitted-at">
+                <button type="submit" id="contact-submit-button" class="md:col-span-2 bg-blue-600 text-white py-6 rounded-2xl font-bold text-xl hover:bg-blue-500 transition shadow-xl shadow-blue-900/20 mt-4">이메일로 문의 보내기</button>
             </form>
-            <p class="mt-8 text-xs text-gray-500 font-bold">* 버튼 클릭 시 이메일 프로그램이 실행되어 내용이 발송됩니다.</p>
+            <p id="contact-form-status" class="mt-6 min-h-[1.5rem] text-sm font-bold text-gray-300" aria-live="polite"></p>
+            <p class="mt-2 text-xs text-gray-500 font-bold">* EmailJS 설정 후 실제 문의 메일 전송이 동작합니다.</p>
         </div>
     </section>
 
@@ -299,7 +301,14 @@
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
+        const EMAILJS_CONFIG = {
+            publicKey: 'OfccLep8qrTgxlyjI',
+            serviceId: 'service_3n54oks',
+            templateId: 'template_cf1rxsf'
+        };
+
         // 스크롤 시 요소 나타나기 애니메이션 자바스크립트
         const observerOptions = {
             threshold: 0.15
@@ -314,6 +323,66 @@
         }, observerOptions);
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const contactForm = document.getElementById('contact-form');
+        const contactSubmitButton = document.getElementById('contact-submit-button');
+        const contactFormStatus = document.getElementById('contact-form-status');
+        const submittedAtInput = document.getElementById('submitted-at');
+
+        function hasValidEmailJsConfig() {
+            return Object.values(EMAILJS_CONFIG).every((value) => value && !value.startsWith('YOUR_EMAILJS_'));
+        }
+
+        function setContactFormStatus(message, tone) {
+            contactFormStatus.textContent = message;
+            contactFormStatus.className = `mt-6 min-h-[1.5rem] text-sm font-bold ${tone === 'error' ? 'text-rose-300' : 'text-emerald-300'}`;
+        }
+
+        if (window.emailjs && hasValidEmailJsConfig()) {
+            emailjs.init({
+                publicKey: EMAILJS_CONFIG.publicKey
+            });
+        }
+
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+
+                if (!window.emailjs || !hasValidEmailJsConfig()) {
+                    setContactFormStatus('EmailJS 설정값을 먼저 넣어주세요. publicKey, serviceId, templateId가 필요합니다.', 'error');
+                    return;
+                }
+
+                submittedAtInput.value = new Date().toLocaleString('ko-KR', {
+                    timeZone: 'Asia/Seoul'
+                });
+
+                const originalButtonText = contactSubmitButton.textContent;
+                contactSubmitButton.disabled = true;
+                contactSubmitButton.textContent = '전송 중입니다...';
+                contactSubmitButton.classList.add('opacity-70', 'cursor-not-allowed');
+                setContactFormStatus('문의 내용을 전송하고 있습니다.', 'success');
+
+                try {
+                    await emailjs.sendForm(
+                        EMAILJS_CONFIG.serviceId,
+                        EMAILJS_CONFIG.templateId,
+                        contactForm
+                    );
+
+                    contactForm.reset();
+                    submittedAtInput.value = '';
+                    setContactFormStatus('문의 메일이 전송되었습니다. 빠르게 연락드릴게요.', 'success');
+                } catch (error) {
+                    console.error('EmailJS send failed:', error);
+                    setContactFormStatus('전송 중 오류가 발생했습니다. EmailJS 설정과 템플릿 매핑을 확인해주세요.', 'error');
+                } finally {
+                    contactSubmitButton.disabled = false;
+                    contactSubmitButton.textContent = originalButtonText;
+                    contactSubmitButton.classList.remove('opacity-70', 'cursor-not-allowed');
+                }
+            });
+        }
     </script>
 
 </body>
