@@ -15,7 +15,7 @@
 
         body { 
             font-family: 'Noto Sans KR', sans-serif; 
-            line-height: 1.8; /* 줄간 간격 1.8 적용 */
+            line-height: 1.2; /* 줄간 간격 1.8 적용 */
         }
 
         .hero-bg {
@@ -41,6 +41,34 @@
         .reveal-delay-3 { transition-delay: 0.6s; }
 
         section { transition: background-color 0.3s ease; }
+
+        .mobile-nav-link {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            body {
+                line-height: 1.65;
+            }
+
+            .hero-bg {
+                min-height: 100svh;
+                padding-top: 7rem;
+                padding-bottom: 4rem;
+            }
+
+            .mobile-nav-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .reveal-delay-1,
+            .reveal-delay-2,
+            .reveal-delay-3 {
+                transition-delay: 0s;
+            }
+        }
     </style>
 </head>
 <body class="bg-white text-gray-900">
@@ -51,6 +79,9 @@
                 <div class="flex-shrink-0 flex items-center">
                     <span class="text-2xl font-bold tracking-tighter text-blue-900">STAY<span class="text-blue-500">BOOST</span></span>
                 </div>
+                <a href="#contact" class="mobile-nav-link md:hidden bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg shadow-blue-200">
+                    문의하기
+                </a>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8 text-sm font-medium">
                         <a href="#strategy" class="hover:text-blue-600 transition">전략</a>
@@ -63,43 +94,43 @@
         </div>
     </nav>
 
-    <section class="hero-bg h-screen flex items-center justify-center text-center text-white">
-        <div class="max-w-4xl px-4 reveal active">
-            <h2 class="text-blue-400 font-semibold tracking-widest mb-6 uppercase">Premium Hotel Marketing</h2>
-            <h1 class="text-5xl md:text-7xl font-bold leading-[1.8] mb-8">
+    <section class="hero-bg min-h-screen flex items-center justify-center text-center text-white">
+        <div class="max-w-4xl px-4 sm:px-6 reveal active">
+            <h2 class="text-blue-400 font-semibold tracking-[0.35em] text-xs sm:text-sm mb-5 sm:mb-6 uppercase">Premium Hotel Marketing</h2>
+            <h1 class="text-3xl sm:text-4xl md:text-7xl font-bold leading-[1.5] md:leading-[1.8] mb-6 sm:mb-8">
                 잠자는 객실을 깨우는<br><span class="text-white">압도적인 트래픽 설계</span>
             </h1>
-            <p class="text-lg md:text-2xl text-gray-300 mb-12 leading-[1.8] font-light">
+            <p class="text-base sm:text-lg md:text-2xl text-gray-300 mb-10 sm:mb-12 leading-[1.8] font-light">
                 단순한 홍보가 아닙니다. 외부 트래픽을 호텔 홈페이지로 응집시키고,<br class="hidden md:block">
                 최종 예약(OTA)까지 이어지는 완벽한 매출 퍼널을 구축합니다.
             </p>
-            <div class="flex flex-col md:flex-row justify-center gap-6">
-                <a href="#pricing" class="bg-blue-600 hover:bg-blue-700 text-white px-12 py-5 rounded-xl font-bold text-xl transition shadow-2xl">
+            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                <a href="#pricing" class="bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-xl transition shadow-2xl">
                     패키지 확인하기
                 </a>
-                <a href="#services" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-12 py-5 rounded-xl font-bold text-xl transition">
+                <a href="#services" class="bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl font-bold text-base sm:text-xl transition">
                     서비스 상세 보기
                 </a>
             </div>
         </div>
     </section>
 
-    <section id="strategy" class="py-40 bg-white">
+    <section id="strategy" class="py-24 md:py-40 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-24 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.8]">수익 극대화를 위한 'STAY-LINK' 전략</h2>
-                <p class="text-xl text-gray-500 max-w-2xl mx-auto leading-[1.8]">우리는 고객이 당신의 호텔을 발견하는 첫 순간부터 예약 완료까지의 모든 경로를 데이터로 설계합니다.</p>
+            <div class="text-center mb-16 md:mb-24 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.6] md:leading-[1.8]">수익 극대화를 위한 'STAY-LINK' 전략</h2>
+                <p class="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-[1.8]">우리는 고객이 당신의 호텔을 발견하는 첫 순간부터 예약 완료까지의 모든 경로를 데이터로 설계합니다.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-stretch">
-                <div class="p-10 border border-gray-100 rounded-[2.5rem] bg-gray-50 text-center hover:shadow-lg transition reveal reveal-delay-1">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-stretch">
+                <div class="p-8 md:p-10 border border-gray-100 rounded-[2.5rem] bg-gray-50 text-center hover:shadow-lg transition reveal reveal-delay-1">
                     <div class="w-20 h-20 bg-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-8 text-blue-600 text-3xl">
                         <i class="fa-solid fa-users"></i>
                     </div>
                     <h3 class="text-2xl font-bold mb-5 leading-[1.8]">1. 트래픽 유입</h3>
                     <p class="text-gray-600 leading-[1.8]">인플루언서와 고퀄리티 리뷰를 통해 잠재 고객의 검색 경로에 강력한 접점을 형성합니다.</p>
                 </div>
-                <div class="p-10 border-2 border-blue-500 rounded-[2.5rem] bg-blue-50/50 text-center relative shadow-2xl transform md:-translate-y-4 reveal reveal-delay-2">
+                <div class="p-8 md:p-10 border-2 border-blue-500 rounded-[2.5rem] bg-blue-50/50 text-center relative shadow-2xl transform md:-translate-y-4 reveal reveal-delay-2">
                     <span class="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-6 py-1.5 rounded-full text-sm font-bold shadow-lg">CORE HUB</span>
                     <div class="w-20 h-20 bg-blue-600 rounded-3xl flex items-center justify-center mx-auto mb-8 text-white text-3xl shadow-xl shadow-blue-200">
                         <i class="fa-solid fa-laptop-code"></i>
@@ -107,7 +138,7 @@
                     <h3 class="text-2xl font-bold mb-5 text-blue-900 leading-[1.8]">2. 전환 원페이지</h3>
                     <p class="text-gray-700 leading-[1.8] font-medium">유입된 고객이 흩어지지 않도록 최적의 UX를 제공하여 호텔의 가치를 한 번에 납득시킵니다.</p>
                 </div>
-                <div class="p-10 border border-gray-100 rounded-[2.5rem] bg-gray-50 text-center hover:shadow-lg transition reveal reveal-delay-3">
+                <div class="p-8 md:p-10 border border-gray-100 rounded-[2.5rem] bg-gray-50 text-center hover:shadow-lg transition reveal reveal-delay-3">
                     <div class="w-20 h-20 bg-blue-100 rounded-3xl flex items-center justify-center mx-auto mb-8 text-blue-600 text-3xl">
                         <i class="fa-solid fa-calendar-check"></i>
                     </div>
@@ -118,71 +149,71 @@
         </div>
     </section>
 
-    <section id="services" class="py-40 bg-gray-100 overflow-hidden border-y border-gray-100">
+    <section id="services" class="py-24 md:py-40 bg-gray-100 overflow-hidden border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-32 reveal">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.8]">성장을 가속화하는 핵심 서비스</h2>
+            <div class="text-center mb-16 md:mb-32 reveal">
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.6] md:leading-[1.8]">성장을 가속화하는 핵심 서비스</h2>
                 <div class="w-24 h-2 bg-blue-600 mx-auto rounded-full"></div>
             </div>
 
-            <div class="space-y-48">
-                <div class="flex flex-col lg:flex-row items-center gap-16 xl:gap-32 reveal">
+            <div class="space-y-20 md:space-y-48">
+                <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16 xl:gap-32 reveal">
                     <div class="w-full lg:w-1/2 group">
                         <div class="relative overflow-hidden rounded-[2rem] shadow-2xl aspect-[4/3]">
                             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" alt="Website Creation" class="w-full h-full object-cover transform transition duration-1000 group-hover:scale-110">
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 space-y-8">
+                    <div class="w-full lg:w-1/2 space-y-6 md:space-y-8">
                         <div>
                             <span class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">Process 01</span>
-                            <h3 class="text-3xl md:text-5xl font-bold text-gray-900 leading-[1.8]">호텔 전용 원페이지<br>홈페이지 구축</h3>
+                            <h3 class="text-2xl md:text-5xl font-bold text-gray-900 leading-[1.6] md:leading-[1.8]">호텔 전용 원페이지<br>홈페이지 구축</h3>
                         </div>
-                        <p class="text-gray-600 text-xl leading-[1.8]">
+                        <p class="text-gray-600 text-lg md:text-xl leading-[1.8]">
                             잠재 고객은 복잡한 것을 싫어합니다. 호텔의 핵심 매력만 압축하여 예약 버튼 클릭률을 극대화하는 모바일 중심의 원페이지를 제작합니다.
                         </p>
-                        <div class="flex gap-4">
+                        <div class="flex flex-wrap gap-3 md:gap-4">
                             <span class="px-5 py-2 bg-white rounded-full text-sm font-bold border border-gray-200 shadow-sm">UX 최적화</span>
                             <span class="px-5 py-2 bg-white rounded-full text-sm font-bold border border-gray-200 shadow-sm">OTA 다이렉트 링크</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col lg:flex-row-reverse items-center gap-16 xl:gap-32 reveal">
+                <div class="flex flex-col lg:flex-row-reverse items-center gap-10 md:gap-16 xl:gap-32 reveal">
                     <div class="w-full lg:w-1/2 group">
                         <div class="relative overflow-hidden rounded-[2rem] shadow-2xl aspect-[4/3]">
                             <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=80" alt="Professional Photography" class="w-full h-full object-cover transform transition duration-1000 group-hover:scale-110">
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 space-y-8 lg:text-right flex flex-col lg:items-end">
+                    <div class="w-full lg:w-1/2 space-y-6 md:space-y-8 lg:text-right flex flex-col lg:items-end">
                         <div>
                             <span class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">Process 02</span>
-                            <h3 class="text-3xl md:text-5xl font-bold text-gray-900 leading-[1.8]">프리미엄 사진 촬영 &<br>구글 리뷰 마케팅</h3>
+                            <h3 class="text-2xl md:text-5xl font-bold text-gray-900 leading-[1.2] md:leading-[1.8]">프리미엄 사진 촬영 &<br>구글 리뷰 마케팅</h3>
                         </div>
-                        <p class="text-gray-600 text-xl leading-[1.8]">
+                        <p class="text-gray-600 text-lg md:text-xl leading-[1.8]">
                             고퀄리티 이미지는 고객의 체류 시간을 늘립니다. 여기에 신뢰를 더해주는 구글 실사용자 리뷰 시스템을 구축하여 검색 랭킹을 상단으로 끌어올립니다.
                         </p>
-                        <div class="flex gap-4">
+                        <div class="flex flex-wrap gap-3 md:gap-4 lg:justify-end">
                             <span class="px-5 py-2 bg-white rounded-full text-sm font-bold border border-gray-200 shadow-sm">고해상도 촬영</span>
                             <span class="px-5 py-2 bg-white rounded-full text-sm font-bold border border-gray-200 shadow-sm">SEO 최적화 리뷰</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="flex flex-col lg:flex-row items-center gap-16 xl:gap-32 reveal">
+                <div class="flex flex-col lg:flex-row items-center gap-10 md:gap-16 xl:gap-32 reveal">
                     <div class="w-full lg:w-1/2 group">
                         <div class="relative overflow-hidden rounded-[2rem] shadow-2xl aspect-[4/3]">
                             <img src="https://images.unsplash.com/photo-1493225255756-d9584f8606e9?auto=format&fit=crop&w=1000&q=80" alt="Travel Influencers" class="w-full h-full object-cover transform transition duration-1000 group-hover:scale-110">
                         </div>
                     </div>
-                    <div class="w-full lg:w-1/2 space-y-8">
+                    <div class="w-full lg:w-1/2 space-y-6 md:space-y-8">
                         <div>
                             <span class="text-blue-600 font-bold tracking-widest uppercase text-sm mb-4 block">Process 03</span>
-                            <h3 class="text-3xl md:text-5xl font-bold text-gray-900 leading-[1.8]">바이럴 마케팅<br>기자단 및 체험단</h3>
+                            <h3 class="text-2xl md:text-5xl font-bold text-gray-900 leading-[1.6] md:leading-[1.8]">바이럴 마케팅<br>기자단 및 체험단</h3>
                         </div>
-                        <p class="text-gray-600 text-xl leading-[1.8]">
+                        <p class="text-gray-600 text-lg md:text-xl leading-[1.8]">
                             수만 명의 팔로워를 보유한 여행 인플루언서들이 당신의 호텔을 홍보합니다. 확실한 외부 유입 트래픽을 만들어 홈페이지 방문자 수를 폭발적으로 증가시킵니다.
                         </p>
-                        <div class="flex gap-4">
+                        <div class="flex flex-wrap gap-3 md:gap-4">
                             <span class="px-5 py-2 bg-white rounded-full text-sm font-bold border border-gray-200 shadow-sm">인플루언서 섭외</span>
                             <span class="px-5 py-2 bg-white rounded-full text-sm font-bold border border-gray-200 shadow-sm">콘텐츠 바이럴</span>
                         </div>
@@ -192,34 +223,34 @@
         </div>
     </section>
 
-    <section id="pricing" class="py-40 bg-white">
+    <section id="pricing" class="py-24 md:py-40 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-[1.8] reveal">투명하고 합리적인 비용</h2>
             <p class="text-xl text-gray-500 mb-2 reveal reveal-delay-1 leading-[1.8]">정찰제 운영으로 신뢰할 수 있는 마케팅 파트너가 되어 드립니다.</p>
             <p class="text-sm text-gray-300 mb-20 reveal reveal-delay-2">모든 금액은 부가세 VAT 별도입니다.</p>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto">
-                <div class="border border-slate-200 rounded-[2.5rem] p-12 bg-slate-50 hover:border-blue-300 transition shadow-md hover:shadow-2xl reveal reveal-delay-2">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 max-w-7xl mx-auto">
+                <div class="border border-slate-200 rounded-[2.5rem] p-8 md:p-12 bg-slate-50 hover:border-blue-300 transition shadow-md hover:shadow-2xl reveal reveal-delay-2">
                     <h3 class="text-3xl font-bold mb-3 text-slate-800 leading-[1.8]">초기 세팅 패키지</h3>
                     <p class="text-slate-500 mb-10 leading-[1.8]">성장을 위한 견고한 토대 마련</p>
                     <div class="space-y-6 text-left mb-12">
-                        <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-slate-200 pb-4">
                             <span class="text-slate-600">홈페이지 제작 및 도메인 설정</span>
                             <span class="font-bold text-xl">150,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-slate-200 pb-4">
                             <span class="text-slate-600">네이버 구글 SEO 최적화</span>
                             <span class="font-bold text-xl">150,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-slate-200 pb-4">
                             <span class="text-slate-600">현장 출장 & 사진 촬영</span>
                             <span class="font-bold text-xl text-right">300,000 <span class="text-xs text-slate-400 font-normal"> ~ </span></span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-slate-200 pb-4">
                             <span class="text-slate-600">구글 리뷰 (초기 15건)</span>
                             <span class="font-bold text-xl">150,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-slate-200 pb-4">
                             <span class="text-slate-600">인플루언서 기자단 (10건)</span>
                             <span class="font-bold text-xl">900,000</span>
                         </div>
@@ -227,30 +258,30 @@
                     <button class="w-full py-5 bg-slate-800 text-white rounded-2xl font-bold text-lg hover:bg-slate-900 transition" onclick="location.href='#contact'">상담 후 세팅 시작</button>
                 </div>
 
-                <div class="border-2 border-blue-600 rounded-[2.5rem] p-12 bg-blue-50 relative shadow-2xl reveal reveal-delay-3">
+                <div class="border-2 border-blue-600 rounded-[2.5rem] p-8 md:p-12 bg-blue-50 relative shadow-2xl reveal reveal-delay-3">
                     <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-8 py-2.5 rounded-full font-bold shadow-xl">
                         월구독 상품
                     </div>
                     <h3 class="text-3xl font-bold mb-3 text-blue-900 leading-[1.8]">디럭스 패키지</h3>
                     <p class="text-gray-500 mb-10 leading-[1.8]">지속적인 유입과 대세감 형성</p>
                     <div class="space-y-6 text-left mb-12 text-blue-900">
-                        <div class="flex justify-between items-center border-b border-blue-100 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-blue-100 pb-4">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 구글 리뷰 등록 (10건/월)</span>
                             <span class="font-bold text-xl">100,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-blue-100 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-blue-100 pb-4">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 인플루언서 기자단 (5건/월)</span>
                             <span class="font-bold text-xl">600,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-blue-100 pb-4 opacity-70">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-blue-100 pb-4 opacity-70">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 홈페이지 무료 유지보수</span>
                             <span class="font-bold">포함</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-blue-100 pb-4 opacity-70">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-blue-100 pb-4 opacity-70">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 월간 성과 분석 리포트</span>
                             <span class="font-bold">포함</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-blue-100 pb-4 opacity-70">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-blue-100 pb-4 opacity-70">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 추가 사진촬영</span>
                             <span class="font-bold">필요시 출장실비 청구</span>
                         </div>                       
@@ -258,30 +289,30 @@
                     <button class="w-full py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition shadow-lg shadow-blue-300" onclick="location.href='#contact'">디럭스 패키지 신청</button>
                 </div>
 
-                <div class="border border-amber-200 rounded-[2.5rem] p-12 bg-gradient-to-b from-amber-50 to-white relative shadow-xl reveal reveal-delay-3">
+                <div class="border border-amber-200 rounded-[2.5rem] p-8 md:p-12 bg-gradient-to-b from-amber-50 to-white relative shadow-xl reveal reveal-delay-3">
                     <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-amber-500 text-white px-8 py-2.5 rounded-full font-bold shadow-xl">
                         월구독 상품
                     </div>
                     <h3 class="text-3xl font-bold mb-3 text-amber-900 leading-[1.8]">프리미엄 패키지</h3>
                     <p class="text-gray-500 mb-10 leading-[1.8]">브랜드 신뢰와 상위 노출을 함께 강화</p>
                     <div class="space-y-6 text-left mb-12 text-amber-900">
-                        <div class="flex justify-between items-center border-b border-amber-100 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-amber-100 pb-4">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 구글 리뷰 등록 (20건/월)</span>
                             <span class="font-bold text-xl">150,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-amber-100 pb-4">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-amber-100 pb-4">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 인플루언서 기자단 (10건/월)</span>
                             <span class="font-bold text-xl">900,000</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-amber-100 pb-4 opacity-80">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-amber-100 pb-4 opacity-80">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 홈페이지 무료 유지보수</span>
                             <span class="font-bold">포함</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-amber-100 pb-4 opacity-80">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-amber-100 pb-4 opacity-80">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 월간 성과 분석 리포트</span>
                             <span class="font-bold">포함</span>
                         </div>
-                        <div class="flex justify-between items-center border-b border-amber-100 pb-4 opacity-80">
+                        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 border-b border-amber-100 pb-4 opacity-80">
                             <span class="flex items-center"><i class="fa-solid fa-check-circle mr-3"></i> 추가 사진촬영</span>
                             <span class="font-bold text-right">필요시 출장실비 청구</span>
                         </div>
@@ -292,12 +323,12 @@
         </div>
     </section>
 
-    <section id="contact" class="py-40 bg-gray-900 text-white">
+    <section id="contact" class="py-24 md:py-40 bg-gray-900 text-white">
         <div class="max-w-4xl mx-auto px-4 text-center reveal">
             <h2 class="text-4xl md:text-5xl font-bold mb-8 leading-[1.8]">마케팅 고민은 끝내고,<br>이제 예약을 받으세요.</h2>
             <p class="text-xl text-gray-400 mb-8 leading-[1.8]">무료 컨설팅을 신청하시면 귀사의 호텔 경쟁력을 분석해 드립니다.</p>
             
-            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 text-left">
                 <div class="space-y-2">
                     <label class="text-sm font-bold text-gray-400 ml-1">호텔/숙소 명칭</label>
                     <input type="text" name="hotel_name" placeholder="예: 스테이부스트 호텔" class="w-full bg-gray-800 border-none p-5 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none text-white transition" required>
@@ -325,7 +356,7 @@
         </div>
     </section>
 
-    <footer class="py-16 bg-black text-gray-500 text-center border-t border-gray-800">
+    <footer class="py-12 md:py-16 bg-black text-gray-500 text-center border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4">
             <span class="text-2xl font-bold tracking-tighter text-blue-900">STAY<span class="text-blue-500">BOOST</span></span>
             <div class="flex flex-wrap justify-center gap-6 mb-8 text-sm">
