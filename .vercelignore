@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+
+node_modules
+.next
+out
+build
+
+dev-server*.log
+*.log
+
+supabase/.temp
